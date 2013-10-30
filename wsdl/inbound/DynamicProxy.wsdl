@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.massarotto.com.br/DynamicProxy/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DynamicProxy" targetNamespace="http://www.massarotto.com.br/DynamicProxy/" xmlns:xsd1="http://www.massarotto.com.br/SecondMethod">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.massarotto.com.br/DynamicProxy/">
+    </xsd:schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    	<xsd:import
+    		namespace="http://www.massarotto.com.br/SecondMethod"
+    		schemaLocation="../../xsd/SecondMethod.xsd">
+    	</xsd:import></xsd:schema></wsdl:types>
+  <wsdl:message name="secondMethodRequest">
+    <wsdl:part element="xsd1:secondMethodReq" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="secondMethodResponse">
+    <wsdl:part element="xsd1:secondMethodResp" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="DynamicProxy">
+    <wsdl:operation name="secondMethod">
+      <wsdl:input message="tns:secondMethodRequest"/>
+      <wsdl:output message="tns:secondMethodResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DynamicProxySOAP" type="tns:DynamicProxy">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="secondMethod">
+      <soap:operation soapAction="http://www.massarotto.com.br/DynamicProxy/secondMethod"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DynamicProxy">
+    <wsdl:port binding="tns:DynamicProxySOAP" name="DynamicProxySOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

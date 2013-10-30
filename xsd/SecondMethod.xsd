@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.massarotto.com.br/SecondMethod"
+	xmlns:tns="http://www.massarotto.com.br/SecondMethod" elementFormDefault="qualified">
+
+    <complexType name="SecondMethodReq">
+    	<sequence>
+    		<element name="parametro" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="SecondMethodResp">
+    	<sequence>
+    		<element name="result" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="secondMethodReq" type="tns:SecondMethodReq"></element>
+
+    <element name="secondMethodResp" type="tns:SecondMethodResp"></element>
+</schema>
